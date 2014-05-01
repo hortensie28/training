@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title></title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<p><strong>name</strong>
+ue_storchenwetter</p>
+
+<p><strong>Description</strong>
+Ein R-Skript zum einlesen und verarbeiten von Daten über das Brutverhalten von Störchen in Wesenberg (Meckl.Vorp.) und Klimadaten einer Station in Waren (Müritz)</p>
+
+<p><strong>Usage</strong>
+Die Funktion muss beim ersten Durchlauf entweder &ldquo;Chunk&rdquo; für &ldquo;Chunk&rdquo; (Achtung Markdown-Dokument) ausgeführt werden oder komplett ausgeführt werden (CHUNKS-&gt;run all ), um die entsprechenden Variablen im Arbeitsspeicher (Workspace) zu erzeugen. 
+!!!Vor der Ausführung Arbeitspfade anpassen (setwd())!!!</p>
+
+<p><strong>Input</strong>
+Wetterdaten -&gt; storch_wetterdaten.txt 
+Objektname: wetter
+Quelle: <a href="https://www.ncdc.noaa.gov/cgi-bin/res40.pl?page=gsod.html">https://www.ncdc.noaa.gov/cgi-bin/res40.pl?page=gsod.html</a>
+Strochdaten bei Wesenberg (Mecklenburg-Vorpommern) -&gt; storchdaten_1.csv
+Objektname: pop
+Quelle: Eigene Recherche M. Otto Juli 2013</p>
+
+<p><strong>Output</strong>
+verschieden Diagramme und Konsolenausgaben (Mittelwert etc.)</p>
+
+<p><strong>author</strong>
+C. V. 
+M. O. </p>
+
+<p><strong>Last modification</strong> 
+Das wäre dann auch euere commit message in github (ohne Datum)
+29.04.2013 - Kleine Aenderungen und Umstellung auf Markdown-Format für Github
+22.11.2013 - Korrektur einiger Fehler und Umstrukturierung (C.Vick)
+19.11.2013 - Umstrukturierung und Dokumentation (M.Otto)</p>
+
+<p><strong>TO DO</strong>
+Test durch Projektteilnehmer
+Ausgabe der vorprozessierten Daten in eine Datei </p>
+
+<h1></h1>
+
+<h3>Setup R Umgebung</h3>
+
+<p>set working directory (Wo wollt ihr speichern und laden? Am besten ein Projektordner anlegen)
+Denkt daran <strong>DEN PFAD ZU ÄNDERN!</strong> Nicht jeder PC hat z.B. den Laufwerksbuchstaben d:\ 
+Achtung KEINEN Backslash() am Ende des Pfades</p>
+
+<pre><code class="r">setwd(&quot;d:/TUB/Lehre/SoSe14/GP_OEKUP_OP_LA_Stadtklima_Berlin/R/data_r/&quot;) 
+</code></pre>
+
+<pre><code class="r">getwd() 
+</code></pre>
+
+<p>Gegenstück, um zu überprüfen eurer aktuellen <strong>working direktory</strong> (Pfad zum aktuellen <strong>Arbeitsordner</strong>)</p>
+
+<h3>HILFE</h3>
+
+<p>zunächt <strong>Denk positiv!</strong> und <strong>nutzte das Web</strong> und <strong>ISIS-Forum</strong> dann ERST die <strong>Betreuer</strong> (siehe author)!</p>
+
+<p>Bei Fragen zu einzelnen Funktionen schreibt &#39;?Funktionsname&#39; in die Konsole tippen z.B. ?plot</p>
+
+<pre><code class="r"> ?plot
+</code></pre>
+
+<p>Wenn ihr den Funktionsnamen nicht vollstaendig kennt geht auch:</p>
+
+<pre><code class="r"> ?plo
+</code></pre>
+
+<p>Hier noch einige nützliche Links wo ihr Hilfe bekommen könnt:</p>
+
+<p>Quick R: <a href="http://www.statmethods.net/">http://www.statmethods.net/</a>
+R Cookbook: <a href="http://www.cookbook-r.com/">http://www.cookbook-r.com/</a>
+R-Bloggers: <a href="http://www.r-bloggers.com/">http://www.r-bloggers.com/</a>
+StackOverflow About R: <a href="http://stackoverflow.com/tags/r/info">http://stackoverflow.com/tags/r/info</a>
+StackOverflow R FAQ: <a href="http://stackoverflow.com/questions/tagged/r-faq">http://stackoverflow.com/questions/tagged/r-faq</a></p>
+
+<h3>Installiere die noch fehlenden Pakete</h3>
+
+<p>R hat eine Grundausstattung aber die &ldquo;community&rdquo; ist ständig am erweitern der Funktionalitäten - damit nicht jedes mal R neu auf dem PC installiert werden muss gibt es sog. <strong>packages</strong>)</p>
+
+<p>lädt das Paket herunter wenn ihr diese Paket erstmalig verwendet 
+(später nicht mehr nötig - BITTE den Chunk-Container entfernen!!!)
+installed.packages() auf der Konsole zeigt euch alle installierten Pakete an</p>
+
+<pre><code class="r">install.packages(&quot;modeest&quot;)
+</code></pre>
+
+<p>aktiviert das Paket</p>
+
+<pre><code class="r">library(&quot;modeest&quot;)
+</code></pre>
+
+<p>mehr zum Thema Pakte installieren findet ihr unter: 
+<a href="http://www.r-bloggers.com/installing-r-packages/">http://www.r-bloggers.com/installing-r-packages/</a></p>
+
+<h3>Daten e(E)inlesen und Daten vorprozessieren</h3>
+
+<p><em>Hinweis</em>
+bei allen Objekten (so organisiert R die Daten intern) in R, immer das selbe Prinzip:</p>
+
+<p>&#39;name des Objekts&#39; (kann frei gewählt werden) &lt;- (Zuordnungspfeil) objektname&#39; (Funktionen, Variablen oder abstrakte Werte)</p>
+
+<p>Objektnamen sollten interpretierbar sein (Achtung R ist Case sensetive!)
+z.B. T_mittel für Temperaturmittel statt nur &#39;x&#39; </p>
+
+<p><em>ACHTUNG:</em> wenn eure working directory nicht richtig angelegt ist, findet er im Folgenden keine Datei!!!</p>
+
+<pre><code class="r">wetter &lt;- read.table (file=&quot;storch_wetterdaten.txt&quot;, header=TRUE)
+</code></pre>
+
+<p>dem Variablennamen &#39;wetter&#39; wird etwas zugeordnet (schau mal bitte unter 
+dem Reiter Workspace nach):
+<strong>read.table</strong> ist eine Funktion, der Argumente übergeben werden (in der runden Klammer) 
+z.B. ein Datensatz mit file = &#39;meineDatensindindieserDatei.txt&#39;.
+(Weitere Informationen mit &#39;?read.table&#39; könnt ihr die Hilfe auf der Kommandozeile aufrufen dort steht erklärt, was z.B. das Schlüsselwort &#39;header&#39; macht 
+(man gibt damit an ob oder ob nicht die erste Zeile im Datensatz der Spaltennamen besitzt, TRUE heißt: ja!)</p>
+
+<p>einlesen der Populationsdaten</p>
+
+<pre><code class="r">pop&lt;-read.table(file=&quot;storchdaten_1.csv&quot;, header=TRUE, sep=&quot;;&quot;, dec=&quot;,&quot;, fill=TRUE)
+</code></pre>
+
+<p>Übersicht über die Strukturierung der Klimadaten
+anzeigen des Kopfes eines Datenblattes: Spalten mit Namen und die ersten 6 Einträge(Zeilen)</p>
+
+<pre><code class="r">head(wetter)
+</code></pre>
+
+<p>anzeigen der Struktur des Objekts (geht mit fast allem? auch funktionen);
+bei Datensätzen ist das eine Liste der Spalten mit den dazugehörigen 
+Variablentypen! (wichtig!)</p>
+
+<pre><code class="r">str(wetter)
+</code></pre>
+
+<p>Umformatieren der Daten fuer besseres Handling </p>
+
+<p>Namen der Spalten ändern für bessere Handhabbarkeit? &#39;names(wetter)&#39; zeigt die derzeitigen Namen, damit wir keine Probleme mit Groß- und Kleinschreibung bekommen, wird alles klein geschrieben der folgenede Befehl wird die names(wetter) überschreiben!</p>
+
+<pre><code class="r">names(wetter) &lt;- c (&quot;date&quot;,&quot;temp&quot;,&quot;dewp&quot;,&quot;slp&quot;,&quot;stp&quot;,&quot;wdsp&quot;,&quot;mxspd&quot;,&quot;tmax&quot;,&quot;tmin&quot;,&quot;prcp&quot;)
+</code></pre>
+
+<p>&#39;?c&#39; Funktion die ihre Argumente kombiniert (combine) und in eine Variable packt. Hier in desem Fall die neuen Namen der Variablen zur besseren Lesbarkeit</p>
+
+<p>damit die Spalten als eigene Vektoren (Vektor: Variable mit mehreren Werten vom selben Typ; eindimensional) abrufbar sind 
+&#39;?attach&#39; in die Konsole gibt euch mehr Informationen zur Funktion</p>
+
+<pre><code class="r">attach(wetter)
+</code></pre>
+
+<p>So sieht eure Tabelle jetzt aus; mit &#39;date&#39;, &#39;temp&#39;, usw.</p>
+
+<pre><code class="r">str(wetter)
+</code></pre>
+
+<p>Ihr könnt die einzelnen Spalten aufrufen oder mit dem Zuordnungspfeil 
+auf neue Variablen übertragen
+bsp.:</p>
+
+<pre><code class="r">temp_dewp &lt;- cbind(temp,dewp)
+</code></pre>
+
+<p>&#39;temp_dewp&#39; ist jetzt eine Matrix mit zwei Spalten (cbind=column-bind) namens temp und dewp und den jeweiligen Einträgen. So sehen die aus:</p>
+
+<pre><code class="r">head(temp_dewp)
+</code></pre>
+
+<p>rm()&#39; für ReMove aus dem Arbeitsspeicher oder Workspace (was ist ein Arbeitsspeicher? siehe: <a href="http://de.wikipedia.org/wiki/Arbeitsspeicher">http://de.wikipedia.org/wiki/Arbeitsspeicher</a>) </p>
+
+<pre><code class="r">rm(temp_dewp) 
+</code></pre>
+
+<p>entfernt &#39;temp_dewp&#39; (schau mal im Reiter Workspace sollte nun nicht mehr aufgelistet sein) </p>
+
+<p>Ok, weiter gehts:</p>
+
+<pre><code class="r">str(date)
+</code></pre>
+
+<p>Das Datum ist &ldquo;nur&rdquo; als Integer-Klasse gespeichert (also als natürliche Zahlen ohne Komma), 
+Wir müssen R daher noch sagen das:
+1. ein Datum gemeint ist und 
+2. Wie die Zahl zu interpretieren ist, </p>
+
+<p>heißt also den Variablentyp von wetter$date ändern (format=&ldquo;%year%month%day&rdquo; oder wie wir es hier machen abgekürzt als format=&ldquo;%Y%m%d&rdquo;):</p>
+
+<pre><code class="r">wetter$date &lt;- strptime(date, format=&quot;%Y%m%d&quot;)
+</code></pre>
+
+<p>mehr zu Variablentypen in R findet ihr unter 
+<a href="http://www.statmethods.net/input/datatypes.html">http://www.statmethods.net/input/datatypes.html</a></p>
+
+<p>mit dem $-Zeichen weiß R, dass wir von &#39;wetter&#39; nur das &#39;date&#39; benutzen wollen 
+da wir die Ergebnisse der Funktion strptime sofort mit &lt;- zuweisen wird die Spalte &#39;date&#39; gleich überschrieben (allerdings nur hier im R workspace/Arbeitsspeicher, die Urliste bleibt
+natürlich unberührt) mehr zu date-time conversion (Umwandlung in Zeitangaben) siehe ?strptime</p>
+
+<p>wir haben nun Grundlegendes geändert, deswegen &#39;attach()&#39; zum überschreiben der &ldquo;alten&rdquo; Variablennamen im Arbeitsspeicher</p>
+
+<pre><code class="r">attach(wetter)
+</code></pre>
+
+<p>Alles chic?</p>
+
+<pre><code class="r">str(date) 
+</code></pre>
+
+<p>Zusammenfassen der Daten, erster Überblick über Datenstruktur/Qualität mit:</p>
+
+<pre><code class="r">summary(wetter)
+</code></pre>
+
+<p><strong>bei einigen max-Werten stehen zu hohe Werte!</strong>
+Bei dewp, stp, wdsp, mxspd, max und prcp scheint 999.9 bzw 9999.9 oder 99.99 ein Fehlerwert zu sein (es gibt auf der Erde keine Messstationen mit einer Windgeschwindigkeit von z.B. 999.9 km/h)
+Die funktion summary () ist eine einfacher Art die Konsistenz der Daten zu prüfen 
+Prüfen auf Fehlwerte über z.B: unlogische Werte wenn keine Meta-Daten (Daten über die Daten vorhanden)! 
+Wir ändern den Fehlerwert auf &#39;NA&#39; (sind nicht viele) - eine Standartformat (Platzhalter) 
+für Fehlwerte in R - damit R sie auch nicht berücksichtigt z.b. bei Diagrammen
+<strong>Indizierung</strong>: eckige Klammern werden benutzt, wenn ich nicht alle Werte 
+nehmen will, sondern nur Werte die eine Eigenschaft haben (Position ist auch eine 
+Eigenschaft bsp.: temp[4] # heißt die vierte Stelle im &#39;temp&#39;-vektor)</p>
+
+<pre><code class="r">temp[4]
+</code></pre>
+
+<p>Unsere Eigenschaft ist, dass dieser spezielle Fehlerwert erreicht wird:
+die einzelnen Spalten werden wieder überschrieben diesmal aber nur an diesen Stellen und zwar mit dem &ldquo;Wert&rdquo; &#39;NA&#39; dabei ist &ldquo;==&rdquo; ein sog. Vergleichsoperator d.h. in diesen Fall z.B.:
+&ldquo;indiziere wo dewp genau gleich 9999.9&rdquo; und schreibe NA rein.</p>
+
+<pre><code class="r">wetter$dewp [dewp==9999.9] &lt;- NA
+
+wetter$stp [stp==9999.9] &lt;- NA
+
+wetter$wdsp [wdsp==999.9] &lt;- NA
+wetter$mxspd [mxspd==999.9] &lt;- NA
+
+wetter$tmax [tmax==999.9] &lt;- NA
+
+wetter$prcp [prcp==99.99] &lt;- NA
+</code></pre>
+
+<p>Bei prcp ist außerdem selbst das 0.75 Quantil noch bei 0.00 (siehe Konsolenausgeabe
+von summary())! Mindestens mehr als dreimal so viele niederschlagslose Tage wie Tage mit Niederschlag?
+Das hat mich stuzig gemacht, ist immerhin Mecklenburg-Vorpommern also 
+eigentlich humides Klima:</p>
+
+<pre><code class="r">plot(date,wetter$prcp, xlab=&quot;Zeit [Jahre]&quot;, ylab=&quot;Niederschlag [inch/Tag]&quot;)
+</code></pre>
+
+<p>zeigt, dass ab einer bestimmten Stelle die Aufzeichnungen gestoppt wurden und die Werte auf 0 gesetzt worden sind.
+Vermutung: am 01.August 2003 wurde die Niederschlagsmessung eingestellt.
+&#39;0&#39; ist aber ein normaler Wert &hellip; Wir brauchen &#39;NA&#39;. Deswegen werden Werte ab dem 01.08.2003 auf NA gesetzt:</p>
+
+<pre><code class="r">wetter$prcp [date&gt;=strptime(20030801,format=&quot;%Y%m%d&quot;)] &lt;- NA
+</code></pre>
+
+<p>alle Stellen in $prcp, für die gilt, dass das Datum größer-gleich als 01.08.2003 ist, werden auf &#39;NA&#39; geändert</p>
+
+<p>und chic?</p>
+
+<pre><code class="r">summary(wetter)
+</code></pre>
+
+<p>Naja 3597 mal &ldquo;NA&rdquo; bei prcp ist nicht super, soll uns aber auch nicht weiter interessieren</p>
+
+<p>Wir haben Grundlegendes geändert, deswegen &#39;attach()&#39; zum überschreiben der &ldquo;alten&rdquo; Variablennamen im Arbeitsspeicher</p>
+
+<pre><code class="r">attach(wetter)
+</code></pre>
+
+<p>nochmal summary()</p>
+
+<pre><code class="r">summary(wetter$temp)
+</code></pre>
+
+<p>Obwohl wir eine Station in Waren an der Müritz haben ist der Maximalwert der Temperatur der letzten 20Jahre bei <strong>83.4 C°</strong>???
+Die Daten dieser Station haben wir von einer us-amerikanischen Einrichtung (GSOD).
+<a href="http://www.ncdc.noaa.gov/cgi-bin/res40.pl">http://www.ncdc.noaa.gov/cgi-bin/res40.pl</a>
+Leider werden dort sehr viele Größen nicht SI-konform benutzt (siehe Webseite).</p>
+
+<p>Die Temperaturen sind in Fahrenheit angegeben, die Windgeschwindigkeit in Knoten und der Niederschlag in inch Säule pro squareinch (WHAT?).
+Wir verwenden die Celciusskala, m/s für Geschwindigkeiten 
+und mm/m² als Säulenhöhe Niederschlag (genau!) 
+Macht aber alles nichts wir haben ja R und hier lernen wir gleich mal wie man eigene 
+Funktionen in R schreibt!</p>
+
+<p><strong>EIGENE FUNKTION IN R SCHREIBEN</strong>
+Das Umrechnen in R ist recht simpel
+und das geht so:
+&#39;Name der Funktion&#39; &lt;- function(&#39;Argument&#39;){
+        &#39;Was mit dem Argument gemacht wird&#39;
+} Ende</p>
+
+<p>Für unser Beispiel: Umrechnung von Fahrenheit in Celsius</p>
+
+<pre><code class="r">f_in_c &lt;- function(x){
+  (x-32)*5/9 # das ist die Umrechnungsformel 
+}
+</code></pre>
+
+<p>Anwendung auf die jeweiligen Spalten</p>
+
+<pre><code class="r">wetter$temp &lt;- f_in_c (temp) # wieder wird überschrieben
+wetter$dewp &lt;- f_in_c (dewp)
+wetter$tmax &lt;- f_in_c (tmax)
+wetter$tmin &lt;- f_in_c (tmin)
+</code></pre>
+
+<p>Anwendung auf Umrechnung von Knoten in m/s</p>
+
+<pre><code class="r">kn_in_ms&lt;-function(x){
+  x*0.51444 
+}
+</code></pre>
+
+<p>Anwendung auf die jeweiligen Spalten in unserem Datenframe</p>
+
+<pre><code class="r">wetter$wdsp &lt;- kn_in_ms (wdsp)
+wetter$mxspd &lt;- kn_in_ms (mxspd)
+</code></pre>
+
+<p>Anwendung auf die Umrechnung von inch in mm</p>
+
+<pre><code class="r">inch_in_mm &lt;- function(x){
+  x*25.4 
+}
+</code></pre>
+
+<p>Anwendung auf die jeweiligen Spalten</p>
+
+<pre><code class="r">wetter$prcp &lt;- inch_in_mm(prcp)
+</code></pre>
+
+<p>Wir haben  Grundlegendes geändert, deswegen &#39;attach()&#39; zum überschreiben der &ldquo;alten&rdquo; 
+Variablennamen im Arbeitsspeicher</p>
+
+<pre><code class="r">attach(wetter)
+</code></pre>
+
+<p>Doch warum haben wir jetzt 352 Zeilen damit verschwendet nur den Datensatz zu &ldquo;verschönern&rdquo;?
+In Zukunft werdet ihr einfach fertige kleine Skripte schreiben, die ihr dann immer und immer 
+wieder auf die Daten loslassen könnt um sie vorzubereiten (Vorprozessierung). Diese werden in 
+Dateien fest abgelegt (ACHTUNG momentan liegt alles im Arbeitsspeicher eures PC, wenn der 
+ausgeschaltet ist müsst ihr alles oberhalb dieser Anmerkungen nochmal durchlaufen lassen - ist 
+bei kleinen Datensätzen wie diese hier auch nicht so schlimm)
+<strong>Übung: Findet herraus, wie man das objekt &ldquo;wetter&rdquo; als datensatz auf eure Festplatte speichert (nutzt Github)</strong></p>
+
+<h3>2. Analyse der Daten (Datenv(V)erabeitung)</h3>
+
+<p>2.1 mittels Methoden der beschreibenden Statistik 
+Mittelwert:</p>
+
+<pre><code class="r">mean(temp)
+</code></pre>
+
+<p>Ihr könnt auf jede einzelne Spalte &#39;mean()&#39; anwenden, oder:
+für Fortgeschrittene:
+apply-Funktionen wenden eine bestimmte Funktion auf eine Liste oder Tabelle an, so wird Zeit gespart und Schreibplatz</p>
+
+<pre><code class="r">sapply(wetter[,2:10],mean, na.rm=TRUE)
+</code></pre>
+
+<p>Auf die Spalten 2 bis 10 wird die Funktion &#39;mean&#39; angewendet. NA werden entfernt mit Schlüsselwort/Argument &#39;na.rm = TRUE&#39;).</p>
+
+<p>weitere Parameter um die Daten statistisch zu &ldquo;beschreiben&rdquo;:
+Median (ein sog. Lageparameter siehe <a href="http://de.wikipedia.org/wiki/Median">http://de.wikipedia.org/wiki/Median</a>)</p>
+
+<pre><code class="r">median(temp)
+</code></pre>
+
+<p>Maximalwert (schon klar oder ;-) )</p>
+
+<pre><code class="r">max(temp)
+</code></pre>
+
+<p>no comment</p>
+
+<pre><code class="r">min(temp)
+</code></pre>
+
+<p>5 % Quantil </p>
+
+<pre><code class="r">quantile(temp,0.05)
+</code></pre>
+
+<p>95% Quantil</p>
+
+<pre><code class="r">quantile(temp,0.95)
+</code></pre>
+
+<p>eine andere Definition des Medians</p>
+
+<pre><code class="r">quantile(temp,0.5)==median(temp)
+</code></pre>
+
+<p>mehr zu Quatilen unter  <a href="http://de.wikipedia.org/wiki/Quantil">http://de.wikipedia.org/wiki/Quantil</a></p>
+
+<p>Varianz (Wie sark shwankt die Temperatur im Mittel (zum Quadrat)?)</p>
+
+<pre><code class="r">var(temp)
+</code></pre>
+
+<p>Standardabweichung (gleiche Aussage wie die Varianz nur einheitentreu 
+es gibt ja kein &ldquo;°C zum Qudrat&rdquo; daher Wurzel aus Var)</p>
+
+<pre><code class="r">sd(temp)
+</code></pre>
+
+<p><strong>Übung:</strong> Was ergibt sd(temp)*sd(temp)?</p>
+
+<p>Es gibt keine vorinstallierte Funktion für den Modus. 
+Da er aber durchaus benutzt wird (auch von uns) ist mittlerweile eine 
+Funktion von Usern  geschrieben worden.
+Wir haben bisher nur Funktionen aus den Paketen &#39;base&#39;, &#39;stats&#39; und &#39;graphics&#39; benutzt
+es gibt aber noch viele weitere, einige mehr verbreitet, andere weniger
+Modus aus dem bereits geladenen Paket &ldquo;modeest&rdquo;</p>
+
+<pre><code class="r">mfv(temp)
+</code></pre>
+
+<h3>Erste Diagramme (OUTPUT)</h3>
+
+<p><strong>Histogramm</strong>
+Was ein Histogramm macht, am besten selber nachschauen!
+mit ?hist könnt ihr noch weitere Argumente sehen, die das Histogramm noch 
+schicker machen können. Im Allgemeinen ist das &#39;graphics&#39; package dafür ausgelegt den plot
+nach und nach zu professionalisieren mit befehlen wie &#39;lines&#39; und &#39;points&#39; und &#39;legend&#39; usw.
+! library(help = &ldquo;graphics&rdquo;) 
+<strong>Übung: Bitte mal selbständig herrausfinden, wie man die Achsen richtig beschrifftet</strong></p>
+
+<pre><code class="r">hist(temp)
+</code></pre>
+
+<p>Boxplot
+Was ein Boxplot macht, am besten selber nachschauen!
+<strong>Übung: Bitte mal selbständig herrausfinden, wie man die Achsen richtig beschrifftet</strong></p>
+
+<pre><code class="r">boxplot(temp)
+</code></pre>
+
+<p>Zeitreihe im Diagramm
+<strong>Übung: Bitte mal selbständig herrausfinden, wie man die Achsen richtig beschrifftet</strong></p>
+
+<pre><code class="r">plot(date,temp,type=&quot;l&quot;)
+</code></pre>
+
+<p>Eine ein wenig unübersichtliche Zeitreihe wenn ihr &ldquo;ranzoomen&rdquo; wollt, müsst ihr &#39;date&#39; und &#39;temp&#39; mit eckigen Klammern einengen. <strong>Aber Achtung! müssen gleich lang sein!</strong></p>
+
+<p><strong>Subset von Daten:</strong></p>
+
+<pre><code class="r">plot(date[date&gt;=strptime(20070101,format=&quot;%Y%m%d&quot;)&amp; date&lt;=strptime(20071231,format=&quot;%Y%m%d&quot;)],temp[date&gt;=strptime(20070101,format=&quot;%Y%m%d&quot;)&amp; date&lt;=strptime(20071231,format=&quot;%Y%m%d&quot;)],type=&quot;l&quot;, xlab=&quot;Monate (in 2007)&quot;, ylab=&quot;Temperatur [°C]&quot;,main=&quot;Jahresübersicht Waren(Müritz) 2007&quot;)
+</code></pre>
+
+<p>Hier habe ich das datum zwischen 01.01. und 31.12. 2007 genommen
+Sieht auf den ersten Blick kryptisch aus, aber im Grunde ist es nur eine Abfrage, ob nach dem 01.01.2007 (date&gt;=) und (&amp;) vor dem 31.12.2007 (date&lt;=). und zwar jeweils bei date und temp (damit date und temp nach der Abfrage gleich lang bleiben)</p>
+
+<p><strong>Erweiterte Indizierung</strong>
+Für dieses zeitliche &ldquo;ranzoomen&rdquo; könnt ihr am besten eigene Variablen kreieren, 
+mit denen ihr dann die anderen Spalten genauso indizieren könnt</p>
+
+<pre><code class="r">tage2007&lt;-date&gt;=strptime(20070101,format=&quot;%Y%m%d&quot;)&amp; date&lt;=strptime(20071231,format=&quot;%Y%m%d&quot;)
+</code></pre>
+
+<p>genau das selbe wie oben</p>
+
+<pre><code class="r">str(tage2007) 
+</code></pre>
+
+<p>Wie ihr seht ist das jetzt ein &ldquo;logical&rdquo;-Vektor (&#39;logi&#39;), Besonderheit: er zeigt nur bei 2007 &#39;TRUE&#39;. </p>
+
+<p>Wenn ihr jetzt temp[tage2007] nehmt, habt ihr nur die werte von 2007
+bsp.:</p>
+
+<p>indiziert die temp auf das Jahr 2007 und bildet dann den Mittelwert</p>
+
+<pre><code class="r">mean(temp[tage2007]) 
+</code></pre>
+
+<p>Die 19zeilige Tafel der Storchenpopulationsentwicklung ist ja schon eingelesen
+Das Zeitformat der Strochdaten müssen aber noch R-konform umformatiert werden (wie auch bei den wetterdaten)</p>
+
+<pre><code class="r">head(pop)
+str(pop)
+names(pop)&lt;-c(&quot;year&quot;,&quot;arr&quot;,&quot;doy_a&quot;,&quot;hatch&quot;,&quot;doy_h&quot;,&quot;fledg&quot;,&quot;lost&quot;,&quot;dep&quot;,&quot;doy_d&quot;)
+pop$arr&lt;-strptime(pop$arr,format=&quot;%d.%m.%Y&quot;)
+pop$hatch&lt;-strptime(pop$hatch,format=&quot;%d.%m.%Y&quot;)
+pop$dep&lt;-strptime(pop$dep,format=&quot;%d.%m.%Y&quot;)
+attach(pop)
+str(pop)
+</code></pre>
+
+<p>So schnell kanns manchmal gehen :-)</p>
+
+<h3>2.2 Datenanalyse mit Methoden der explorativen Statistik (Wo gibt es Muster, Trends, Auffälligkeiten)</h3>
+
+<p>Frage die von Interesse sein könnte:
+z.B. Welchen Einfluss hat das Klima auf die Storchpopulation?</p>
+
+<p>Technisches Problem 
+wir haben 19 Datenzeilen in &#39;pop&#39;. die &#39;plot(x,y)&#39;Funktion nimmt aber immer gleich viele x und y werte.
+Wir müssen also unsere Wetterdaten (6765 Zeilen) auf die jeweiligen Jahre &ldquo;zusammenkürzen&rdquo;. 
+Wir brauchen pro Jahr einen Wert.
+Wie kann aber ein ganzen Jahr auf einen Wert gekürzt werden? statistische Maße!</p>
+
+<p>Wenn wir zB die Jungtiere betrachten brauchen wir nicht das ganze Jahr;
+hier z.B. die Brutzeit und die Nistzeit: Wir nehmen der Einfachheit mal an, dass Störche durchschnittlich 33 Tage brüten und dann 61 Tage Nesthocker sind. (wikipedia)</p>
+
+<pre><code class="r">hatchtime&lt;-as.difftime(33,format=&quot;%d&quot;,units=&quot;days&quot;)
+nesttime&lt;-as.difftime(61,format=&quot;%d&quot;,units=&quot;days&quot;)
+</code></pre>
+
+<p>Minimaltemperaturen während des Brütens:</p>
+
+<p>Minimum der Minimaltemperaturen zwischen dem Beginn des Brütens und dem Ende der Brutzeit für das erste Jahr
+Hypothese: die besonders kalten Nächte erschweren den Erfolg des Ausbrütens</p>
+
+<pre><code class="r">mintemp_hatch&lt;-min(tmin[date&gt;=hatch[1]&amp; date&lt;=(hatch[1]+hatchtime)])
+</code></pre>
+
+<p>Minimum der Minimaltemperaturen zwischen dem Beginn des Brütens und dem Ende der Brutzeit nun für die fehlenden Jahre über eine sog. <strong>While-Loop (Schleife</strong> Mach es, solange bis ich stop sage, hier: Minimumtemperaturen finden über 19 Jahre in der Brutzeit)</p>
+
+<pre><code class="r">i&lt;-1          # laufvariable für die Schleife also ein Zähler für den Rechner
+while(i&lt;19) { # beginn schleife - solange i kleiner 19
+  i&lt;-i+1      # i &quot;läuft&quot;, wird also um 1 erhöht bei jedem Durchgang
+              # die Variable mintemp_hatch wird nicht überschrieben, 
+              # sondern der neue Wert an den alten angehängt &quot;(c)
+              # ombine&quot;oder concatenate (&#39;?c&#39;)
+mintemp_hatch&lt;-c(mintemp_hatch,min(tmin[date&gt;=hatch[i] &amp; date&lt;=(hatch[i]+hatchtime)]))  
+}#ende der Schleife - springt nach oben zu &#39;while&#39; - ist i immernoch kleiner 19? dann alles nochmal!
+</code></pre>
+
+<p>am Ende haben wir einen mintemp_hatch-Vektor der die Minimaltemperaturen während des Brütens festgehalten hat. <strong>HURRA!!!</strong></p>
+
+<p>Oder wie wäre es mit Minimaltemperaturen während der Nestlingzeit?</p>
+
+<p>Minimum der Minimaltemperaturen zwischen dem Ende der Brutzeit und dem Ende der Nesthockerzeit
+Hypothese: die besoders kalten Nächte erschweren die Aufzucht der Jungvögel</p>
+
+<pre><code class="r">mintemp_nest&lt;-min(tmin[date&gt;=(hatch[1]+hatchtime) &amp; date&lt;=(hatch[1]+hatchtime+nesttime)])
+i&lt;-1 # wieder die Laufvariable
+while(i&lt;19) { # beginn der Schleife
+  i&lt;-i+1 # sie läuft
+  mintemp_nest&lt;-c(mintemp_nest,min(tmin[date&gt;=(hatch[i]+hatchtime) &amp; date&lt;=(hatch[i]+hatchtime+nesttime)]))
+  # siehe oben
+}
+</code></pre>
+
+<p>zur Überprüfung der Daten:</p>
+
+<pre><code class="r">length(mintemp_hatch)
+length(mintemp_nest)
+</code></pre>
+
+<p>Länge 19? dann alles ok!</p>
+
+<p>Scatterplots auch Streudiagramme genannt:
+achtet bitte mal auf die Achsenbeschrifftung - so und nicht anders :-) </p>
+
+<pre><code class="r">plot(mintemp_hatch, fledg-lost, xlab=&quot;Minimaltemperatur während der Brutzeit [°C]&quot;, ylab=&quot;Anzahl der überlebenden Jungtiere&quot;, main=&quot;Beispiel für Korrelation?&quot;)
+plot(mintemp_nest, fledg-lost, xlab=&quot;Minimaltemperatur während der Nistzeit [°C]&quot;, ylab=&quot;Anzahl der überlebenden Jungtiere&quot;, main=&quot;Beispiel für Korrelation?&quot;)
+</code></pre>
+
+<h3>2.3.Datenanalyse mit Methoden der schließende Statistik (Was sind meine Erkenntnisse?)</h3>
+
+<p>Ok wir kennen die Daten jetzt ganz gut oder?
+Gibt es erkennbare Zusammenhänge? Erkennbare Muster im Scatterplot?
+Hier kommt die Korrelation zum Einsatz, zur Erinnerung Korrelation is das Verhältnis der
+Varianz zwischen den Variablen zur Varianz unabhängig von den Variablen!
+Klinkt kompliziert? Macht nichts R rechnet das für euch aus.
+Korrelationskoeffizient: ohne Indizierung gibt er NA aus&hellip;. man muss die NA werte rausstreichen: &#39;?is.na&#39; 
+Dies ist eigentlich Teil der Vorprozessierung wir machen es aber hier der Einfacheit halber!</p>
+
+<pre><code class="r">cor(mintemp_hatch[!is.na(mintemp_hatch)],(fledg-lost)[!is.na(mintemp_hatch)])
+cor(mintemp_nest[!is.na(mintemp_nest)],(fledg-lost)[!is.na(mintemp_nest)])
+</code></pre>
+
+<p>keine Korrelation oder? Es gab ja auch kein wirklich erkennbares Muster im scatterplot oben.
+Der Korrelationsfaktor oder auch Bestimmtheitsmaß sagt auch nochmal: nein zumindest kein klassisch linearer Zusammenhang zwischen den Variablen 
+<strong>Aber Achtung Korrelation ist keine Kausalität per se!!!</strong>
+Hier mal ein hübsches Beispiel und schlechte Nachrichten fuer kleine Maenner:
+<a href="http://www.spiegel.de/unispiegel/jobundberuf/10-cm-2000-euro-grosse-maenner-verdienen-mehr-a-296853.html">http://www.spiegel.de/unispiegel/jobundberuf/10-cm-2000-euro-grosse-maenner-verdienen-mehr-a-296853.html</a></p>
+
+<p>Zurück zu den Störchen: Vielleicht die Aufenthaltsdauer? Im Zusammenhang mit der durchschnittlichen Temperatur?</p>
+
+<pre><code class="r">meantemp_stay&lt;-mean(temp[date&gt;=arr[1] &amp; date&lt;=dep[1]])
+</code></pre>
+
+<p>Mittelwert der Temperaturen, für die gilt, dass Datum größer-gleich Ankunftsdatum UND Datum
+kleiner-gleich Abflugdatum wieder eine Schleife:</p>
+
+<pre><code class="r">i&lt;-1 # wieder die Laufvariable
+while(i&lt;19) { # beginn der Schleife
+  i&lt;-i+1 # Laufvariable läuft
+  meantemp_stay&lt;-c(meantemp_stay,mean(temp[date&gt;=arr[i] &amp; date&lt;=dep[i]]))
+  # siehe oben
+}
+</code></pre>
+
+<pre><code class="r">length(meantemp_stay)
+</code></pre>
+
+<p>Auch 19?</p>
+
+<pre><code class="r">plot(meantemp_stay,dep-arr , xlab=&quot;Durchschnittstemperaturen während des Aufenthaltes [°C]&quot;, ylab=&quot;Aufenthaltsdauer [in Tage]&quot;, main=&quot;Korrelation?&quot;)
+</code></pre>
+
+<p>die NA-Values müssen wieder gestrichen werden durch Indizierung
+dep-arr muss als Zahl berechnet werden (as.numeric = als Zahl), sonst ist es eine Zeitangabe, mit der R nicht rechnen kann</p>
+
+<pre><code class="r">cor(meantemp_stay[!is.na(meantemp_stay)],as.numeric(dep-arr)[!is.na(meantemp_stay)])
+</code></pre>
+
+<p><strong>Übung: Was ist der Wert für den Korrelationskoeffizienten? Was bedeutet er?</strong> 
+(Hinweis nutze die Funktion print()) <strong>und diskutiert im ISIS-Forum</strong></p>
+
+<p>ziehen der &#39;lm()&#39; Linie in dem bestehenden Plot. Geht auch mit &#39;lines()&#39;
+&#39;lm()&#39; modelliert eine Regressionsgerade. &#39;y~x&#39; heißt y ist abhängig von x</p>
+
+<pre><code class="r">abline(lm((dep-arr) ~ meantemp_stay),col=&quot;blue&quot;)
+</code></pre>
+
+<p>Wir brauchen aber noch die Werte dieser Regression.
+Regression ehm??? schau mal unter: <a href="http://de.wikipedia.org/wiki/Lineare_Regression">http://de.wikipedia.org/wiki/Lineare_Regression</a></p>
+
+<pre><code class="r">co&lt;-coef(lm((dep-arr) ~ meantemp_stay))
+</code></pre>
+
+<p>co ist mein Name der Variable, die folgendes bekommt:
+&#39;?coef&#39; ist eine Funktion die Koeffizienten sucht und zwar innerhalb der &#39;lm()&#39;-funktion
+co enthält jetzt also die beiden Koeffizienten der linearen Regression</p>
+
+<pre><code class="r">print(co)
+</code></pre>
+
+<p>&#39;text(x,y,text)&#39; schreibt einen Text an die x,y-Koordinaten. 
+&#39;cex=&#39; stellt die Schriftgröße ein.</p>
+
+<pre><code class="r">text(17.3,129,&quot;lineare Regression&quot;,cex=0.8)
+text(17.3,127,paste(&quot;y =&quot;,round(co[1],2),round(co[2],2), &quot;x &quot;),cex=0.8,col=&quot;blue&quot;)
+</code></pre>
+
+<p>schreibt die Formel für die lineare Regression in den plot. &#39;round(Zahl,2)&#39; rundet die Zahl auf zwei Nachkommastellen.</p>
+
+<p>Fertig!
+<strong>Und was sagen euch die Ergenisse? Diskutiert es im Forum (ISIS). Postet eure plot als png!</strong></p>
+
+<h2>zum Aufräumen</h2>
+
+<p>mit ls() könnt ihr euch euren workspace einmal anschauen. Kram, den ihr nicht mehr braucht, könnt ihr rm() entfernen</p>
+
+<p>rm(list=ls()) # entfernt alles. ALLES!</p>
+
+<p>Und wie wars? </p>
+
+<pre><code class="r">ihr_sagt&lt;-&#39;super! Danke ihr seit einfach die .....&#39;
+print(ihr_sagt)
+wir_darauf &lt;- &#39;Schon gut ;-)&#39;
+print(wir_darauf)
+rm(ihr_sagt,wir_darauf)
+</code></pre>
+
+</body>
+
+</html>
+
