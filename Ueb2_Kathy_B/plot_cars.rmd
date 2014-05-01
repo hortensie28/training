@@ -1,0 +1,49 @@
+ Mein erstes MarkDown - File von Kathy Boerner 
+========================================================
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **Help** toolbar button for more details on using R Markdown).
+
+When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+### name
+_plot cars_
+
+### description  
+_A simple script to plot the car dataset of R_
+
+### usage  
+_call the function line by line_
+
+### input   
+* _cars (dataset yet implemented in R)_
+
+### output
+
+* _plot speed vs. distance_  
+* _give informations of variables (console)_
+
+### author 
+_K.B._
+
+```{r}
+plot(cars)    # grafische Darstellung von Autodaten 
+```
+**Informationen zu den Variablen**
+
+```{r}
+str(cars)
+```
+
+You can also embed plots, for example:
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+summary(cars$dist)
+summary(cars$speed)
+```
+
+[Link zum Foto](file:///E:/Kathys Ordner/Kathy R-Programmierung/Hausaufgaben/Ueb2/Bilder/friends.jpg)  
+![Foto](Bilder/bumi.gif)
+
+******
+******
