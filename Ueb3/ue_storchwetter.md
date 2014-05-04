@@ -41,8 +41,12 @@ set working directory (Wo wollt ihr speichern und laden? Am besten ein Projektor
 Denkt daran **DEN PFAD ZU ÄNDERN!** Nicht jeder PC hat z.B. den Laufwerksbuchstaben d:\ 
 Achtung KEINEN Backslash(\) am Ende des Pfades
 
+#```{r}
+#setwd("d:/TUB/Lehre/SoSe14/GP_OEKUP_OP_LA_Stadtklima_Berlin/R/data_r/") 
+#```
+
 ```{r}
-setwd("d:/TUB/Lehre/SoSe14/GP_OEKUP_OP_LA_Stadtklima_Berlin/R/data_r/") 
+setwd("/Users/bughunter/zu bearbeiten/_KathyAufMac/GitHub/training/Ueb3/") 
 ```
 
 ```{r}
@@ -453,6 +457,7 @@ plot(date,temp,type="l")
 Eine ein wenig unübersichtliche Zeitreihe wenn ihr "ranzoomen" wollt, müsst ihr 'date' und 'temp' mit eckigen Klammern einengen. **Aber Achtung! müssen gleich lang sein!**
 
 **Subset von Daten:**
+
 ```{r}
 plot(date[date>=strptime(20070101,format="%Y%m%d")& date<=strptime(20071231,format="%Y%m%d")],temp[date>=strptime(20070101,format="%Y%m%d")& date<=strptime(20071231,format="%Y%m%d")],type="l", xlab="Monate (in 2007)", ylab="Temperatur [°C]",main="Jahresübersicht Waren(Müritz) 2007")
 ```
